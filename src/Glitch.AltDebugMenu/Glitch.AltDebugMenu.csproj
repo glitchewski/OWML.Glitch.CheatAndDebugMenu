@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F90F886-1F96-4966-9766-43C8711190F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DebuggestMenu</RootNamespace>
+    <AssemblyName>DebuggestMenu</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.5.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.Abstractions">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.Common">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.Logging">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.ModHelper">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.ModHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.ModHelper.Assets">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.ModHelper.Assets.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.ModHelper.Events">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.ModHelper.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.ModHelper.Input">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.ModHelper.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.ModHelper.Interaction">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.ModHelper.Interaction.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.ModHelper.Menus">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.ModHelper.Menus.dll</HintPath>
+    </Reference>
+    <Reference Include="OWML.Utils">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\OWML.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.InputSystem, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AltDebugMenu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default-config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="manifest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      rmdir /s /q "$(OwmlDir)\Mods\$(ModUniqueName)"
+      md "$(OwmlDir)\Mods\$(ModUniqueName)"
+
+      copy /y "$(TargetPath)" "$(OwmlDir)\Mods\$(ModUniqueName)"
+      copy /y "$(ProjectDir)\default-config.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
+      copy /y "$(ProjectDir)\manifest.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
