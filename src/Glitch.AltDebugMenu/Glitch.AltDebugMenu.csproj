@@ -7,8 +7,8 @@
     <ProjectGuid>{4F90F886-1F96-4966-9766-43C8711190F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DebuggestMenu</RootNamespace>
-    <AssemblyName>DebuggestMenu</AssemblyName>
+    <RootNamespace>Glitch.AltDebugMenu</RootNamespace>
+    <AssemblyName>Glitch.AltDebugMenu</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
