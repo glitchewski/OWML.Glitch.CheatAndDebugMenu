@@ -3,7 +3,7 @@
   "author": "glitch",
   "name": "Alternate Debug Menu",
   "uniqueName": "Glitch.AltDebugMenu",
-  "description": "Patches in debug mode along with some improvements",
-  "version": "0.1.2",
+  "description": "Patches in debug mode along with some improvements. Click three dots on the right, select 'Show in Explorer' and open 'readme.txt' for keybindings.",
+  "version": "0.2.0",
   "owmlVersion": "2.0.0"
 }
