@@ -19,6 +19,11 @@ namespace Glitch.AltDebugMenu
         protected bool _isStarted;
         protected bool _gui;
 
+        protected bool _collisionShip = true;
+        protected bool _collisionPlayer = true;
+
+        protected OWLight2[] _strangerLights;
+
         protected MemorizedWarpPoint[] _warpPoints = new MemorizedWarpPoint[3];
         private void Start()
         {
@@ -26,6 +31,7 @@ namespace Glitch.AltDebugMenu
             ModHelper.HarmonyHelper.EmptyMethod<DebugInputManager>("Awake");
             ModHelper.Events.Subscribe<DebugInputManager>(Events.AfterStart);
             ModHelper.Events.Subscribe<PlayerAudioController>(Events.AfterStart);
+            ModHelper.Events.Subscribe<RingWorldFlickerController>(Events.AfterStart);
             ModHelper.Events.Event += OnEvent;
 
             
@@ -47,6 +53,13 @@ namespace Glitch.AltDebugMenu
             else if (behaviour is PlayerAudioController pac && ev == Events.AfterStart)
             {
                 HookAudioSource(pac);
+            }
+            else if (behaviour is RingWorldFlickerController rfc && ev == Events.AfterStart)
+            {
+                var lightsField = typeof(RingWorldFlickerController)
+                    .GetField("_lights", BindingFlags.NonPublic | BindingFlags.Instance);
+                var lights = lightsField?.GetValue(rfc) as OWLight2[];
+                _strangerLights = lights;
             }
         }
 
@@ -114,6 +127,72 @@ namespace Glitch.AltDebugMenu
                     shipTransform.GetComponentInChildren<ShipDamageController>().ToggleInvincibility();
                 }
             }
+
+            if (GetKeyDown(DebugKeys.LearnLaunchCodes))
+            {
+                PlayerData.LearnLaunchCodes();
+            }
+
+            if (GetKeyDown(DebugKeys.RefillResources))
+            {
+                Locator.GetPlayerTransform().GetComponent<PlayerResources>().DebugRefillResources();
+                if (Locator.GetShipTransform())
+                {
+                    ShipComponent[] componentsInChildren = Locator.GetShipTransform().GetComponentsInChildren<ShipComponent>();
+                    for (int i = 0; i < componentsInChildren.Length; i++)
+                    {
+                        componentsInChildren[i].SetDamaged(false);
+                    }
+                }
+            }
+
+            if (GetKeyDown(DebugKeys.ToggleClipping))
+            {
+                PlayClick();
+                if (PlayerState.AtFlightConsole())
+                {
+                    if (_collisionShip)
+                    {
+                        _collisionShip = false;
+                        Locator.GetShipBody().DisableCollisionDetection();
+                    }
+                    else
+                    {
+                        _collisionShip = true;
+                        Locator.GetShipBody().EnableCollisionDetection();
+                    }
+                }
+                else
+                {
+                    if (_collisionPlayer)
+                    {
+                        _collisionPlayer = false;
+                        Locator.GetPlayerBody().DisableCollisionDetection();
+                    }
+                    else
+                    {
+                        _collisionPlayer = true;
+                        Locator.GetPlayerBody().EnableCollisionDetection();
+                    }
+                }
+            }
+
+            if (GetKeyDown(DebugKeys.DarkenStranger))
+            {
+                /*foreach (var strangerLight in _strangerLights)
+                {
+                    strangerLight.SetIntensity(strangerLight.GetIntensity() / 10);
+                }*/
+            }
+
+            if (GetKeyDown(DebugKeys.FastForward))
+            {
+                Time.timeScale = 20f;
+            }
+            else if (GetKeyUp(DebugKeys.FastForward))
+            {
+                Time.timeScale = 1f;
+            }
         }
 
         protected void GetSpawnPoints()
@@ -135,6 +214,11 @@ namespace Glitch.AltDebugMenu
         private bool GetKeyDown(Key keyCode)
         {
             return Keyboard.current[keyCode].wasPressedThisFrame;
+        }
+
+        private bool GetKeyUp(Key keyCode)
+        {
+            return Keyboard.current[keyCode].wasReleasedThisFrame;
         }
     }
 }

@@ -16,6 +16,11 @@ namespace Glitch.AltDebugMenu
         public static Key HideGui = Key.F1;
         public static Key SuitUp = Key.F2;
         public static Key Invincibility = Key.F7;
+        public static Key LearnLaunchCodes = Key.F3;
+        public static Key ToggleClipping = Key.F11;
+        public static Key RefillResources = Key.F4;
+        public static Key DarkenStranger = Key.Numpad9;
+        public static Key FastForward = Key.Equals;
 
         // Advanced Warp
         public static Key AdvancedWarpExecute = Key.Backslash;

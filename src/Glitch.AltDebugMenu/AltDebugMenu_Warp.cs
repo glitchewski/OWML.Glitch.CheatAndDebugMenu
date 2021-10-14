@@ -92,7 +92,7 @@ namespace Glitch.AltDebugMenu
         /// </summary>
         protected void HandleAdvancedWarp()
         {
-            if (Keyboard.current[Key.LeftBracket].wasPressedThisFrame)
+            if (GetKeyDown(DebugKeys.AdvancedWarpPrevious))
             {
                 if (_spawnPointIndex == 0)
                 {
@@ -105,7 +105,7 @@ namespace Glitch.AltDebugMenu
                 PlayClick();
             }
 
-            if (Keyboard.current[Key.RightBracket].wasPressedThisFrame)
+            if (GetKeyDown(DebugKeys.AdvancedWarpNext))
             {
                 if (_spawnPointIndex == _spawnPoints.Length - 1)
                 {
@@ -118,7 +118,7 @@ namespace Glitch.AltDebugMenu
                 PlayClick();
             }
 
-            if (Keyboard.current[Key.Backslash].wasPressedThisFrame)
+            if (GetKeyDown(DebugKeys.AdvancedWarpExecute))
             {
                 _spawner.DebugWarp(_spawnPoints[_spawnPointIndex]);
             }
