@@ -20,6 +20,7 @@ namespace Glitch.AltDebugMenu
         public static Key ToggleClipping = Key.F11;
         public static Key RefillResources = Key.F4;
         public static Key DarkenStranger = Key.Numpad9;
+        public static Key LightenUp = Key.Numpad8;
         public static Key FastForward = Key.Equals;
 
         // Advanced Warp
@@ -44,6 +45,7 @@ namespace Glitch.AltDebugMenu
         public static Key WarpMoon = Key.Digit8;
         public static Key WarpStranger = Key.Digit9;
         public static Key WarpShip = Key.Digit0;
-        public static Key WarpModifier = Key.Minus;
+        public static Key WarpModifierA = Key.P;
+        public static Key WarpModifierB = Key.Minus;
     }
 }

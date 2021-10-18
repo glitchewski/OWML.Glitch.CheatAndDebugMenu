@@ -1,39 +1,42 @@
-﻿Here's a list of keybinds available (they're not rebindable currently).
+﻿Thanks for using my Alternate Debug Menu mod.
+Here's a list of keybinds available (they're not rebindable currently) and some basic help.
 
-BASIC KEYS
-Backquote (`) - shows/hides mod GUI
-F1 - shows/hides game GUI
-F2 - add/remove space suit
-F3 - learn launch codes
-F4 - refill resources
-F7 - toggle invincibility
-F11 - toggle clipping (acts weird since universe is always on the move!)
-Equals (=) - fast forward (allows to skip the mask at end of loop too)
+==BASIC FUNCTIONALITIES==
+(`)     - Show/hide mod GUI (timer and current warp point) (it's backquote, left of key 1)
+(F1)    - Show/hide game GUI (air, fuel, direction, whatnot)
+(F2)    - Add/remove space suit
+(F3)    - Learn launch codes
+(F4)    - Refill resources/health
+(F7)    - Toggle invincibility
+(F11)   - Toggle clipping (for Hatchling or for ship, depending if you're sitting in the cockpit) (usually makes everything float away since the planets are always on the move)
+(=)     - Fast forward (equals sign) (also allows to fast forward the mask at the end of the loop)
+(Num 9) - Turn Stranger's artificial sun on/off
 
-BASIC WARP
-Keys 1 to 0			- different warp points or to be exact:
-	1 - Comet / Sun Station
-	2 - Twins One / Two
-	3 - Timber Hearth / Alternate location on TH
-	4 - Brittle Hollow
-	5 - Giants Deep
-	6 - Dark Bramble
-	7 - Quantum Moon
-	8 - Attlerock Moon Lookout / Signal Dish
-	9 - Stranger / Alternate location on Stranger
-	0 - your Ship
-Minus (-)			- warp modifier
-Basically if you press keys from 1 to 0 you warp to different planets, if you first hold minus key and then any of the 1 to 0 keys, you should warp to alternate location if available.
+==BASIC WARP FUNCTIONALITIES==
+You need to hold either warp modifier A or B (A takes precedence) to use warp keys, as they overlap with tool keybindings
+(-) - Warp Modifier B (minus sign)
+(P) - Warp Modifier A
+While holding modifier A or B:
+(1) - A: Comet /  B: Sun Station
+(2) - A: Twin One / B: Twin Two
+(3) - A: Timber Hearth / B: Alternate location on TH
+(4) - A: Brittle Hollow
+(5) - A: Giants Deep
+(6) - A: Dark Bramble
+(7) - A: Quantum Moon
+(8) - A: Attlerock Moon Lookout / B: Signal Locator
+(9) - A: Stranger's dock / B: Stranger near lamp laboratory
+(0) - A: your Ship
 
-ADVANCED WARP
-Left bracket ([) - select previous warp point
-Right bracket (]) - select next warp point
-Backslash (\) - warp to selected
-Selected warp point should be visible in mod GUI (press ~ to see it)
+==ADVANCED WARP FUNCTIONALITIES==
+Currently active warp point is visible in mod GUI (press backslash (`) key to see it)
+([) - (left bracket) select previous warp point 
+(]) - (right bracket) select next warp point
+(\) - (backslash) warp to selected (NOTE! on UK keyboard layout that's the tilde (~) key)
 
-MEMORY WARP
-Numpad 1 - warp to point 1
-Numpad 2 - warp to point 2
-Numpad 3 - warp to point 3
-Numpad 0 - set mode
-If you press Num 1 - 3, you warp to saved locations. You save locations by holding Num 0 and then pressing one of three memory keys (Num 1 to Num 3).
+==MEMORY WARP FUNCTIONALITIES==
+If you press just the (warp memory) button, you'll warp to corresponding location (given that you've saved it first). To save the location to memory, hold the (set to memory) button and then press corresponding (warp memory) button.
+(Num 0) - set to memory
+Numpad 1 - warp memory 1
+Numpad 2 - warp memory 2
+Numpad 3 - warp memory 3

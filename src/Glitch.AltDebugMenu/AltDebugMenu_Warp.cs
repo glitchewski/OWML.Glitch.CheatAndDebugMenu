@@ -12,77 +12,77 @@ namespace Glitch.AltDebugMenu
         {
             if (GetKeyDown(DebugKeys.WarpComet))
             {
-                if (GetKey(DebugKeys.WarpModifier))
-                {
-                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.SunStation));
-                }
-                else
+                if (GetKey(DebugKeys.WarpModifierA))
                 {
                     _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.Comet));
+                }
+                else if (GetKey(DebugKeys.WarpModifierB))
+                {
+                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.SunStation));
                 }
             }
             else if (GetKeyDown(DebugKeys.WarpHourglassTwins))
             {
-                if (GetKey(DebugKeys.WarpModifier))
-                {
-                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.HourglassTwin_2));
-                }
-                else
+                if (GetKey(DebugKeys.WarpModifierA))
                 {
                     _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.HourglassTwin_1));
+                }
+                else if (GetKey(DebugKeys.WarpModifierB))
+                {
+                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.HourglassTwin_2));
                 }
             }
             else if (GetKeyDown(DebugKeys.WarpTimberHearth))
             {
-                if (GetKey(DebugKeys.WarpModifier))
-                {
-                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.TimberHearth_Alt));
-                }
-                else
+                if (GetKey(DebugKeys.WarpModifierA))
                 {
                     _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.TimberHearth));
                 }
+                else if (GetKey(DebugKeys.WarpModifierB))
+                {
+                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.TimberHearth_Alt));
+                }
             }
-            else if (GetKeyDown(DebugKeys.WarpBrittleHollow))
+            else if (GetKeyDown(DebugKeys.WarpBrittleHollow) && GetKey(DebugKeys.WarpModifierA))
             {
                 _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.BrittleHollow));
             }
-            else if (GetKeyDown(DebugKeys.WarpGiantsDeep))
+            else if (GetKeyDown(DebugKeys.WarpGiantsDeep) && GetKey(DebugKeys.WarpModifierA))
             {
                 _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.GasGiant));
             }
-            else if (GetKeyDown(DebugKeys.WarpDarkBramble))
+            else if (GetKeyDown(DebugKeys.WarpDarkBramble) && GetKey(DebugKeys.WarpModifierA))
             {
                 _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.DarkBramble));
             }
-            else if (GetKeyDown(DebugKeys.WarpShip))
+            else if (GetKeyDown(DebugKeys.WarpShip) && GetKey(DebugKeys.WarpModifierA))
             {
                 _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.Ship));
             }
-            else if (GetKeyDown(DebugKeys.WarpQuantumMoon))
+            else if (GetKeyDown(DebugKeys.WarpQuantumMoon) && GetKey(DebugKeys.WarpModifierA))
             {
                 _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.QuantumMoon));
             }
             else if (GetKeyDown(DebugKeys.WarpStranger))
             {
-                if (GetKey(DebugKeys.WarpModifier))
-                {
-                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.InvisiblePlanet_Alt));
-                }
-                else
+                if (GetKey(DebugKeys.WarpModifierA))
                 {
                     _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.InvisiblePlanet));
+                }
+                else if (GetKey(DebugKeys.WarpModifierB))
+                {
+                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.InvisiblePlanet_Alt));
                 }
             }
             else if (GetKeyDown(DebugKeys.WarpMoon))
             {
-                if (GetKey(DebugKeys.WarpModifier))
-                {
-                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.SignalDish));
-                }
-                else
+                if (GetKey(DebugKeys.WarpModifierA))
                 {
                     _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.LunarLookout));
+                }
+                else if (GetKey(DebugKeys.WarpModifierB))
+                {
+                    _spawner.DebugWarp(_spawner.GetSpawnPoint(SpawnLocation.SignalDish));
                 }
             }
         }

@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using Glitch.AltDebugMenu.Controllers;
+using Glitch.AltDebugMenu.Interfaces;
 using Glitch.AltDebugMenu.Models;
 using OWML.Common;
 using OWML.ModHelper;
@@ -22,7 +25,9 @@ namespace Glitch.AltDebugMenu
         protected bool _collisionShip = true;
         protected bool _collisionPlayer = true;
 
-        protected OWLight2[] _strangerLights;
+        private RingworldLightsController _rlc;
+        private List<IModModule> _modModules = new List<IModModule>();
+            
 
         protected MemorizedWarpPoint[] _warpPoints = new MemorizedWarpPoint[3];
         private void Start()
@@ -31,10 +36,8 @@ namespace Glitch.AltDebugMenu
             ModHelper.HarmonyHelper.EmptyMethod<DebugInputManager>("Awake");
             ModHelper.Events.Subscribe<DebugInputManager>(Events.AfterStart);
             ModHelper.Events.Subscribe<PlayerAudioController>(Events.AfterStart);
-            ModHelper.Events.Subscribe<RingWorldFlickerController>(Events.AfterStart);
+            ModHelper.Events.Subscribe<RingWorldController>(Events.AfterStart);
             ModHelper.Events.Event += OnEvent;
-
-            
         }
 
         private void PlayClick()
@@ -54,12 +57,10 @@ namespace Glitch.AltDebugMenu
             {
                 HookAudioSource(pac);
             }
-            else if (behaviour is RingWorldFlickerController rfc && ev == Events.AfterStart)
+            else if (behaviour is RingWorldController rc && ev == Events.AfterStart)
             {
-                var lightsField = typeof(RingWorldFlickerController)
-                    .GetField("_lights", BindingFlags.NonPublic | BindingFlags.Instance);
-                var lights = lightsField?.GetValue(rfc) as OWLight2[];
-                _strangerLights = lights;
+                _rlc = new RingworldLightsController(rc);
+                _modModules.Add(_rlc);
             }
         }
 
@@ -85,6 +86,9 @@ namespace Glitch.AltDebugMenu
 
         public void Update()
         {
+            // update every initialized module
+            _modModules.ForEach(x => x.Update());
+
             if (!_isStarted)
             {
                 return;
@@ -179,10 +183,7 @@ namespace Glitch.AltDebugMenu
 
             if (GetKeyDown(DebugKeys.DarkenStranger))
             {
-                /*foreach (var strangerLight in _strangerLights)
-                {
-                    strangerLight.SetIntensity(strangerLight.GetIntensity() / 10);
-                }*/
+                _rlc?.SwitchLights();
             }
 
             if (GetKeyDown(DebugKeys.FastForward))

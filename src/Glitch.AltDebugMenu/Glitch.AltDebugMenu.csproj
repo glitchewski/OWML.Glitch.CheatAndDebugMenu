@@ -96,7 +96,9 @@
   <ItemGroup>
     <Compile Include="AltDebugMenu.cs" />
     <Compile Include="AltDebugMenu_Warp.cs" />
+    <Compile Include="Controllers\RingworldLightsController.cs" />
     <Compile Include="DebugKeys.cs" />
+    <Compile Include="Interfaces\IModModule.cs" />
     <Compile Include="Models\MemorizedWarpPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,6 +115,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="changelog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
@@ -123,6 +130,7 @@
       copy /y "$(ProjectDir)\default-config.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
       copy /y "$(ProjectDir)\manifest.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
 	  copy /y "$(ProjectDir)\readme.txt" "$(OwmlDir)\Mods\$(ModUniqueName)"
+	  copy /y "$(ProjectDir)\changelog.txt" "$(OwmlDir)\Mods\$(ModUniqueName)"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>
