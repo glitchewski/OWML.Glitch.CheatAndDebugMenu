@@ -15,7 +15,7 @@ Here's a list of keybinds available (they're not rebindable currently) and some 
 `F7`    | Toggle invincibility
 `F11`   | Toggle clipping (for Hatchling or for ship, depending if you're sitting in the cockpit) (usually makes everything float away since the planets are always on the move)
 `=`     | Fast forward (equals sign) (also allows to fast forward the mask at the end of the loop)
-`Num 9` | Turn Stranger's artificial sun on/off
+`Num9` | Turn Stranger's artificial sun on/off
 
 ## Basic Warp Functionalities
 
@@ -53,7 +53,7 @@ Currently active warp point is visible in mod GUI (press backslash (`` ` ``) key
 If you press just the (warp memory) button, you'll warp to corresponding location (given that you've saved it first). To save the location to memory, hold the (set to memory) button and then press corresponding (warp memory) button.
 | Key | Description |
 | :-: | --- |
-`Num 0` | set to memory
-`Numpad 1` | warp memory 1
-`Numpad 2` | warp memory 2
-`Numpad 3` | warp memory 3
+`Num0` | set to memory
+`Num1` | warp memory 1
+`Num2` | warp memory 2
+`Num3` | warp memory 3
