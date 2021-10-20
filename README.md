@@ -25,7 +25,10 @@ You need to hold either warp modifier A or B (A takes precedence) to use warp ke
 | :-: | --- |
 `-` | Warp Modifier B (minus sign)
 `P` | Warp Modifier A
+
 While holding modifier A or B:
+| Key | Description |
+| :-: | --- |
 `1` | A: Comet /  B: Sun Station
 `2` | A: Twin One / B: Twin Two
 `3` | A: Timber Hearth / B: Alternate location on TH
