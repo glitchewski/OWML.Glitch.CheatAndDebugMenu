@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Glitch.AltDebugMenu.Controllers;
 using Glitch.AltDebugMenu.Interfaces;
 using Glitch.AltDebugMenu.Models;
+using Glitch.AltDebugMenu.Modules;
 using OWML.Common;
 using OWML.ModHelper;
 using UnityEngine;
@@ -25,9 +25,12 @@ namespace Glitch.AltDebugMenu
         protected bool _collisionShip = true;
         protected bool _collisionPlayer = true;
 
-        private RingworldLightsController _rlc;
+        private RingworldSunModule _ringworldSunModule;
+        private BoosterModule _boosterModule;
         private List<IModModule> _modModules = new List<IModModule>();
-            
+
+        private bool _flashlightPowered = false;
+        private Light _l;
 
         protected MemorizedWarpPoint[] _warpPoints = new MemorizedWarpPoint[3];
         private void Start()
@@ -52,15 +55,31 @@ namespace Glitch.AltDebugMenu
                 _isStarted = true;
 
                 GetSpawnPoints();
+
+                _boosterModule = new BoosterModule();
+
+                // ignore please, for future work
+                /* var playerBody = Locator.GetPlayerBody();
+
+                var lightGo = new GameObject("Light");
+                var light = lightGo.AddComponent<Light>();
+                lightGo.transform.parent = playerBody.transform;
+                lightGo.transform.position = new Vector3(1f, 1f, 1f);
+                _l = light;
+
+                //light.range = 20f;
+                light.intensity = 40f;
+                //light.type = LightType.Point;*/
             }
             else if (behaviour is PlayerAudioController pac && ev == Events.AfterStart)
             {
                 HookAudioSource(pac);
+
             }
             else if (behaviour is RingWorldController rc && ev == Events.AfterStart)
             {
-                _rlc = new RingworldLightsController(rc);
-                _modModules.Add(_rlc);
+                _ringworldSunModule = new RingworldSunModule(rc);
+                _modModules.Add(_ringworldSunModule);
             }
         }
 
@@ -82,6 +101,9 @@ namespace Glitch.AltDebugMenu
 
             GUI.Box(new Rect(10, 45, 200, 25), "Warp point:");
             GUI.Box(new Rect(230, 45, 800, 25), $"{_spawnPoints[_spawnPointIndex]} ({_spawnPointIndex + 1}/{_spawnPoints.Length})");
+
+            GUI.Box(new Rect(10, 80, 200, 25), "Boost:");
+            GUI.Box(new Rect(230, 80, 800, 25), $"Plr: {_boosterModule.PlayerBoostMultiplier * 100}% / Ship: {_boosterModule.ShipBoostMultiplier * 100}%");
         }
 
         public void Update()
@@ -183,7 +205,7 @@ namespace Glitch.AltDebugMenu
 
             if (GetKeyDown(DebugKeys.DarkenStranger))
             {
-                _rlc?.SwitchLights();
+                _ringworldSunModule?.SwitchLights();
             }
 
             if (GetKeyDown(DebugKeys.FastForward))
@@ -193,6 +215,41 @@ namespace Glitch.AltDebugMenu
             else if (GetKeyUp(DebugKeys.FastForward))
             {
                 Time.timeScale = 1f;
+            }
+
+            if (GetKeyDown(DebugKeys.BoostIncrease))
+            {
+                PlayClick();
+                var amount = GetKey(DebugKeys.WarpPointSetModifier) ? 10f : 0.5f;
+                if (PlayerState.AtFlightConsole()) _boosterModule.IncreaseShipBoost(amount);
+                else _boosterModule.IncreasePlayerBoost(amount);
+            }
+            else if (GetKeyDown(DebugKeys.BoostDecrease))
+            {
+                PlayClick();
+                var amount = GetKey(DebugKeys.WarpPointSetModifier) ? 10f : 0.5f;
+                if (PlayerState.AtFlightConsole()) _boosterModule.DecreaseShipBoost(amount);
+                else _boosterModule.DecreasePlayerBoost(amount);
+            }
+
+            if (GetKeyDown(DebugKeys.LightenUp))
+            {
+                _flashlightPowered = !_flashlightPowered;
+                foreach (var owLight2 in Locator.GetFlashlight().GetLights())
+                {
+                    if (_flashlightPowered)
+                    {
+                        owLight2.GetLight().range *= 5f;
+                        owLight2.GetLight().intensity *= 2f;
+                    }
+                    else
+                    {
+                        owLight2.GetLight().range /= 5f;
+                        owLight2.GetLight().intensity /= 2f;
+                    }
+                }
+
+                PlayClick();
             }
         }
 

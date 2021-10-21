@@ -1,11 +1,11 @@
-﻿using Glitch.AltDebugMenu.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Glitch.AltDebugMenu.Interfaces;
 
-namespace Glitch.AltDebugMenu.Controllers
+namespace Glitch.AltDebugMenu.Modules
 {
-    public class RingworldLightsController : IModModule
+    public class RingworldSunModule : IModModule
     {
         private RingWorldFlickerController _ringWorldFlickerController;
 
@@ -17,7 +17,7 @@ namespace Glitch.AltDebugMenu.Controllers
 
         private bool _lightsEnabled = true;
 
-        public RingworldLightsController(RingWorldController ringWorldController)
+        public RingworldSunModule(RingWorldController ringWorldController)
         {
             var rfcField = typeof(RingWorldController).GetField("_flickerController",
                 BindingFlags.NonPublic | BindingFlags.Instance);

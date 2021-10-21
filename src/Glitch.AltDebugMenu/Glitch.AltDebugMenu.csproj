@@ -96,7 +96,8 @@
   <ItemGroup>
     <Compile Include="AltDebugMenu.cs" />
     <Compile Include="AltDebugMenu_Warp.cs" />
-    <Compile Include="Controllers\RingworldLightsController.cs" />
+    <Compile Include="Modules\BoosterModule.cs" />
+    <Compile Include="Modules\RingworldSunModule.cs" />
     <Compile Include="DebugKeys.cs" />
     <Compile Include="Interfaces\IModModule.cs" />
     <Compile Include="Models\MemorizedWarpPoint.cs" />
