@@ -18,7 +18,10 @@ Here's a list of keybinds available (they're not rebindable currently) and some 
 `Num8` | Superpowered industrial flashlight on/off
 `Num9` | Turn Stranger's artificial sun on/off
 `Del`  | Force flashlight on (useful whenever you can't turn it on with `F` key)
-Boost  | Following can be used to change jetpack/ship boost power (depending if you're sitting in the cockpit) by the magnitude of 50% (or 1000% if you hold `Num0` first, go crazy).
+
+Following can be used to change jetpack/ship boost power (depending if you're sitting in the cockpit) by the magnitude of 50% (or 1000% if you hold `Num0` first, go crazy).
+| Key | Description |
+| :-: | --- |
 `Num+` | Increase boost power
 `Num-` | Decrease boost power
 
