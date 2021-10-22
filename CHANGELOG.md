@@ -1,6 +1,11 @@
 ﻿# Changelog
 All notable changes to the mod will be documented in this file.
 
+## [0.5.1]
+
+### Fixed
+- removed ability to lower boost multiplier to or below zero (to avoid crashing the game
+
 ## [0.5.0]
 The Brighten Up update
 
