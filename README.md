@@ -15,7 +15,12 @@ Here's a list of keybinds available (they're not rebindable currently) and some 
 `F7`    | Toggle invincibility
 `F11`   | Toggle clipping (for Hatchling or for ship, depending if you're sitting in the cockpit) (usually makes everything float away since the planets are always on the move)
 `=`     | Fast forward (equals sign) (also allows to fast forward the mask at the end of the loop)
+`Num8` | Superpowered industrial flashlight on/off
 `Num9` | Turn Stranger's artificial sun on/off
+`Del`  | Force flashlight on (useful whenever you can't turn it on with `F` key)
+	   | Following can be used to change jetpack/ship boost power (depending if you're sitting in the cockpit) by the magnitude of 50% (or 1000% if you hold `Num0` first, go crazy).
+`Num+` | Increase boost power
+`Num-` | Decrease boost power
 
 ## Basic Warp Functionalities
 

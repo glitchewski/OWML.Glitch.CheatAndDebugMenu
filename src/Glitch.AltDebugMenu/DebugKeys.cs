@@ -24,6 +24,7 @@ namespace Glitch.AltDebugMenu
         public static Key DarkenStranger = Key.Numpad9;
         public static Key LightenUp = Key.Numpad8;
         public static Key FastForward = Key.Equals;
+        public static Key ForceFlashlight = Key.Delete;
 
         // Advanced Warp
         public static Key AdvancedWarpExecute = Key.Backslash;

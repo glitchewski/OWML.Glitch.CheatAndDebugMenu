@@ -251,6 +251,12 @@ namespace Glitch.AltDebugMenu
 
                 PlayClick();
             }
+
+            if (GetKeyDown(DebugKeys.ForceFlashlight))
+            {
+                var f = Locator.GetFlashlight();
+                if(f.IsFlashlightOn())  f.TurnOff(true); else f.TurnOn(true);
+            }
         }
 
         protected void GetSpawnPoints()
