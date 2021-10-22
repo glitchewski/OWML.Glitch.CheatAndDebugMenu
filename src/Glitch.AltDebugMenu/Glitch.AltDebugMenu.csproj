@@ -130,8 +130,6 @@
       copy /y "$(TargetPath)" "$(OwmlDir)\Mods\$(ModUniqueName)"
       copy /y "$(ProjectDir)\default-config.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
       copy /y "$(ProjectDir)\manifest.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
-	  copy /y "$(ProjectDir)\readme.txt" "$(OwmlDir)\Mods\$(ModUniqueName)"
-	  copy /y "$(ProjectDir)\changelog.txt" "$(OwmlDir)\Mods\$(ModUniqueName)"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>
