@@ -39,7 +39,9 @@ namespace Glitch.AltDebugMenu.Modules
 
         public void DecreasePlayerBoost(float amount = 0.5f)
         {
-            PlayerBoostMultiplier -= amount;
+            var newAmount = PlayerBoostMultiplier -= amount;
+            if (amount <= 0) return;
+            PlayerBoostMultiplier = newAmount;
             SetMaxThrust(_playerThrusterModel, PlayerBoostMultiplier * _playerBoostDefault);
         }
 
@@ -51,7 +53,9 @@ namespace Glitch.AltDebugMenu.Modules
 
         public void DecreaseShipBoost(float amount = 0.5f)
         {
-            ShipBoostMultiplier -= amount;
+            var newAmount = ShipBoostMultiplier -= amount;
+            if (amount <= 0) return;
+            ShipBoostMultiplier = newAmount;
             SetMaxThrust(_shipThrusterModel, ShipBoostMultiplier * _shipBoostDefault);
         }
 
