@@ -1,6 +1,6 @@
-# OWML.Glitch.AltDebugMenu
+# Cheat And Debug Menu for Outer Wilds Mod Loader
 
-Thanks for using my Alternate Debug Menu mod.
+Thanks for using my Cheat and Debug Menu mod.
 Here's a list of keybinds available (they're not rebindable currently) and some basic help.
 
 ## Basic Functionalities

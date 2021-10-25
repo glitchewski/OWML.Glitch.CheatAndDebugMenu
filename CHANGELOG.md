@@ -1,6 +1,16 @@
 ﻿# Changelog
 All notable changes to the mod will be documented in this file.
 
+## [0.5.3]
+
+### Other
+- renamed mod to Cheat and Debug Menu from Alt Debug Menu
+
+## [0.5.2]
+
+### Other
+- version number omitted
+
 ## [0.5.1]
 
 ### Fixed
