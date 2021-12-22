@@ -31,6 +31,11 @@ namespace Glitch.AltDebugMenu.Modules
 
         public void Update()
         {
+            if (LoadManager.GetCurrentScene() != OWScene.SolarSystem)
+            {
+                return;
+            }
+
             // by default, the lights are lit up on init
             if (_lightsEnabled) return;
 
@@ -41,6 +46,11 @@ namespace Glitch.AltDebugMenu.Modules
 
         public void SwitchLights()
         {
+            if (LoadManager.GetCurrentScene() != OWScene.SolarSystem)
+			{
+                return;
+			}
+
             UpdateLightsAndRenderersList();
             _lightsEnabled = !_lightsEnabled;
             SetLightsState(_lightsEnabled);
