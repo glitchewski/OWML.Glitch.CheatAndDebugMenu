@@ -18,12 +18,16 @@ namespace Glitch.AltDebugMenu.Modules
 
         public BoosterModule()
         {
-            _playerThrusterModel = Locator.GetPlayerSuit().GetComponent<JetpackThrusterModel>();
-            _shipThrusterModel = Locator.GetShipBody().GetComponent<ShipThrusterModel>();
-            _fieldMaxTransationalThrust = typeof(ThrusterModel).GetField("_maxTranslationalThrust", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (LoadManager.GetCurrentScene() == OWScene.SolarSystem)
+			{
+                _shipThrusterModel = Locator.GetShipBody().GetComponent<ShipThrusterModel>();
+                _shipBoostDefault = _shipThrusterModel.GetMaxTranslationalThrust();
+            }
 
-            _shipBoostDefault = _shipThrusterModel.GetMaxTranslationalThrust();
+            _playerThrusterModel = Locator.GetPlayerSuit().GetComponent<JetpackThrusterModel>();
             _playerBoostDefault = _playerThrusterModel.GetMaxTranslationalThrust();
+
+            _fieldMaxTransationalThrust = typeof(ThrusterModel).GetField("_maxTranslationalThrust", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         public void Update()
